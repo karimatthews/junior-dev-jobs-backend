@@ -5,11 +5,13 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    render json: @jobs
   end
 
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    render json: @job
   end
 
   # GET /jobs/new
@@ -29,7 +31,7 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
+        format.json { render json: @job }
       else
         format.html { render :new }
         format.json { render json: @job.errors, status: :unprocessable_entity }
