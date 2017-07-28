@@ -6,4 +6,8 @@ class JobSerializer < ActiveModel::Serializer
     number_with_delimiter(object.salary)
   end
 
+  def work_type
+    object.work_type.downcase
+  end
+
 end
