@@ -28,8 +28,9 @@ class JobsController < ApplicationController
   def create
     job_info = JSON.parse(request.raw_post)
 
+
     @job = Job.new(job_info)
-    
+
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }

@@ -8,6 +8,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get jobs_url
     assert_response :success
+    assert_equal(JSON.parse(response.body).length, 2)
   end
 
   test "should get new" do
@@ -17,10 +18,12 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create job" do
     assert_difference('Job.count') do
-      post jobs_url, params: { job: { company: @job.company, description: @job.description, salary: @job.salary, source_link: @job.source_link, suburb: @job.suburb, title: @job.title, type: @job.type } }
+      post(jobs_url, params: { company: @job.company, description: @job.description,
+        salary: @job.salary, source_link: @job.source_link, suburb: @job.suburb,
+        title: @job.title, work_type: @job.work_type },
+        as: :json)
     end
-
-    assert_redirected_to job_url(Job.last)
+    assert_response :success
   end
 
   test "should show job" do
@@ -34,7 +37,7 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update job" do
-    patch job_url(@job), params: { job: { company: @job.company, description: @job.description, salary: @job.salary, source_link: @job.source_link, suburb: @job.suburb, title: @job.title, type: @job.type } }
+    patch job_url(@job), params: { job: { company: @job.company, description: @job.description, salary: @job.salary, source_link: @job.source_link, suburb: @job.suburb, title: @job.title, work_type: @job.work_type } }
     assert_redirected_to job_url(@job)
   end
 
