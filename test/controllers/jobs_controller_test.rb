@@ -24,6 +24,9 @@ class JobsControllerTest < ActionDispatch::IntegrationTest
         as: :json)
     end
     assert_response :success
+    assert_equal(JSON.parse(response.body).length, 9)
+
+    require 'take_screenshot'
   end
 
   test "should show job" do

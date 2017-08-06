@@ -8,7 +8,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
-# Use sqlite3 as the database for Active Record
+# Use postgres as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -40,6 +40,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'sqlite3'
 end
